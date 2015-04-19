@@ -12,7 +12,7 @@ function oldInsert(value) {
 }
 
 
-function dsl() {
+function fluent() {
   var propertySpec = {}, builder = new Proxy({}, {
     get: function (target, prop, receiver) {
       return prop === '_then' ? _then : function () {
@@ -49,7 +49,7 @@ function dsl() {
   return builder;
 }
 
-var insert = dsl().insert('value').into('array').after('otherValue')._then(function ({value, array, otherValue}) {
+var insert = fluent().insert('value').into('array').after('otherValue')._then(function ({value, array, otherValue}) {
   array.splice(array.indexOf(otherValue) + 1, 0, value);
   return array;
 });

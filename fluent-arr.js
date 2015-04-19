@@ -12,7 +12,7 @@ function oldInsert(value) {
 }
 
 
-function dsl(extend) {
+function fluent(extend) {
   var propertySpec = {}, builder = new Proxy({}, {
     get: function (target, prop, receiver) {
       return prop === '_then' ? _then : function () {
@@ -54,7 +54,7 @@ function dsl(extend) {
   return builder;
 }
 
-var insert = dsl().insert('*').into('array').after('*')._then(function (value, array, otherValue) {
+var insert = fluent().insert('*').into('array').after('*')._then(function (value, array, otherValue) {
   array.splice(array.indexOf(otherValue) + 1, 0, value);
   return array;
 });
@@ -63,7 +63,7 @@ var result = insert(2).into([1, 3]).after(1);
 
 console.log(result);
 
-dsl(Array.prototype).with('*').after('*')._then(function (value, otherValue) {
+fluent(Array.prototype).with('*').after('*')._then(function (value, otherValue) {
   var copy = this.slice(0);
   copy.splice(copy.indexOf(otherValue) + 1, 0, value);
   return copy;
