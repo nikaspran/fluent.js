@@ -1,0 +1,28 @@
+{
+  "name": "fluent.js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/fluent.js",
+  "dependencies": {},
+  "devDependencies": {
+    "expect.js": "^0.3.1",
+    "gulp": "^3.8.11",
+    "gulp-jshint": "^1.10.0",
+    "gulp-mocha": "^2.0.1",
+    "jshint-stylish": "^1.0.1",
+    "run-sequence": "^1.1.0"
+  },
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nikaspran/fluent.js.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nikaspran/fluent.js/issues"
+  },
+  "homepage": "https://github.com/nikaspran/fluent.js"
+}
