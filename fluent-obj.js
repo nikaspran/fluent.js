@@ -1,4 +1,4 @@
-function oldInsert(value) {
+function insert(value) {
   return {
     into: function (array) {
       return {
@@ -49,10 +49,14 @@ function fluent() {
   return builder;
 }
 
-var insert = fluent().insert('value').into('array').after('otherValue')._then(function ({value, array, otherValue}) {
-  array.splice(array.indexOf(otherValue) + 1, 0, value);
-  return array;
-});
+var insert = fluent()
+  .insert('value')
+  .into('array')
+  .after('otherValue')
+  ._then(function ({value, array, otherValue}) {
+    array.splice(array.indexOf(otherValue) + 1, 0, value);
+    return array;
+  });
 
 var result = insert(2).into([1, 3]).after(1);
 
