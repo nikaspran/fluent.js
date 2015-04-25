@@ -32,7 +32,7 @@ console.log(insert(2).into([1, 3]).after(1)); //[1, 2, 3]
 ```js
 var fluent = require('fluent.js');
 
-var insert = fluent({
+fluent({
   with: '*',
   after: '*'
 }, function handler(value, otherValue) {
