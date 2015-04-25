@@ -1,6 +1,6 @@
 # fluent.js [![Build Status](https://travis-ci.org/nikaspran/fluent.js.svg?branch=master)](https://travis-ci.org/nikaspran/fluent.js)
 
-A tiny library for building fluent interfaces in JavaScript
+A tiny library for building [fluent interfaces](http://en.wikipedia.org/wiki/Fluent_interface) in JavaScript
 
 ## Installation
 
