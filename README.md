@@ -33,10 +33,9 @@ console.log(insert(2).into([1, 3]).after(1)); //[1, 2, 3]
 var fluent = require('fluent.js');
 
 var insert = fluent({
-  insert: '*',
-  into: '[]',
+  with: '*',
   after: '*'
-}, function handler(value, array, otherValue) {
+}, function handler(value, otherValue) {
   var copy = this.slice(0);		
   copy.splice(copy.indexOf(otherValue) + 1, 0, value);		
   return copy;
