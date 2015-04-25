@@ -3,17 +3,27 @@ var gulp = require('gulp'),
   mocha = require('gulp-mocha'),
   runSequence = require('run-sequence');
 
+var bailOnFail = !!process.env.CI;
 
 gulp.task('lint', function () {
-  return gulp.src('./lib/*.js')
+  var stream = gulp.src('./lib/*.js')
     .pipe(jshint())
     .pipe(jshint.reporter('jshint-stylish'));
+
+  return bailOnFail ? stream.pipe(jshint.reporter('fail')).on('error', function (error) {
+    console.error(error.message);
+    process.exit(1);
+  }) : stream;
 });
 
 gulp.task('test', function () {
   return gulp.src('./lib/*.spec.js', {read: false})
     .pipe(mocha())
-    .on('error', function () {
+    .on('error', function (error) {
+      if (bailOnFail) {
+        console.error(error.message);
+        process.exit(1);
+      }
       this.emit('end');
     });
 });
