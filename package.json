@@ -1,7 +1,8 @@
 {
   "name": "fluent.js",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.1.0",
+  "description": "A tiny library for building fluent interfaces in JavaScript",
+  "author": "Nikas Praninskas <nikaspran@gmail.com>",
   "main": "lib/fluent.js",
   "dependencies": {},
   "devDependencies": {
@@ -19,7 +20,6 @@
     "type": "git",
     "url": "https://github.com/nikaspran/fluent.js.git"
   },
-  "author": "",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/nikaspran/fluent.js/issues"
