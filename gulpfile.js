@@ -59,6 +59,11 @@ gulp.task('push:tags', function () {
   });
 });
 
+gulp.task('npm:publish', function (done) {
+  var spawn = require('child_process').spawn;
+  spawn('npm', ['publish'], {stdio: 'inherit'}).on('close', done);
+});
+
 function release(type, done) {
   gulp.task('bumpAndTag:' + type, function () {
     return gulp.src(['./package.json', './bower.json'])
@@ -72,6 +77,7 @@ function release(type, done) {
   return runSequence(
     'bumpAndTag:' + type,
     'push:tags',
+    'npm:publish',
     done
   );
 }

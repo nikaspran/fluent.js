@@ -48,7 +48,6 @@ console.log(['this', 'awesome'].with('is').after('this')); //['this', 'is', 'awe
 
 * Argument validation
 * ES6 object destructuring
-* Simple build for browsers
 * Branching functions
 * ???
 
