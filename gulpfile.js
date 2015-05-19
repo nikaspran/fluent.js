@@ -1,4 +1,8 @@
 var gulp = require('gulp'),
+  bump = require('gulp-bump'),
+  git = require('gulp-git'),
+  filter = require('gulp-filter'),
+  tagVersion = require('gulp-tag-version'),
   jshint = require('gulp-jshint'),
   mocha = require('gulp-mocha'),
   replace = require('gulp-replace'),
@@ -48,6 +52,33 @@ gulp.task('build', function (done) {
     done
   );
 });
+
+gulp.task('push:tags', function () {
+  git.push('origin', 'master', {args: " --tags"}, function (err) {
+    if (err) throw err;
+  });
+});
+
+function release(type, done) {
+  gulp.task('bumpAndTag:' + type, function () {
+    return gulp.src(['./package.json', './bower.json'])
+      .pipe(bump({type: type}))
+      .pipe(gulp.dest('./'))
+      .pipe(git.commit('Release ' + type))
+      .pipe(filter('package.json'))
+      .pipe(tagVersion());
+  });
+
+  return runSequence(
+    'bumpAndTag:' + type,
+    'push:tags',
+    done
+  );
+}
+
+gulp.task('release', release.bind(null, 'patch'));
+gulp.task('release:minor', release.bind(null, 'minor'));
+gulp.task('release:major', release.bind(null, 'major'));
 
 gulp.task('watch', function () {
   gulp.watch('./lib/*.js', ['build']);
