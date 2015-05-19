@@ -1,6 +1,6 @@
 {
   "name": "fluent.js",
-  "version": "0.2.1",
+  "version": "0.1.1",
   "description": "A tiny library for building fluent interfaces in JavaScript",
   "author": "Nikas Praninskas <nikaspran@gmail.com>",
   "main": "lib/fluent.js",
