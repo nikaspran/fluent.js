@@ -1,6 +1,9 @@
 var gulp = require('gulp'),
   jshint = require('gulp-jshint'),
   mocha = require('gulp-mocha'),
+  replace = require('gulp-replace'),
+  rename = require('gulp-rename'),
+  uglify = require('gulp-uglify'),
   runSequence = require('run-sequence');
 
 var bailOnFail = !!process.env.CI;
@@ -28,10 +31,20 @@ gulp.task('test', function () {
     });
 });
 
+gulp.task('browser', function () {
+  return gulp.src(['lib/fluent.js'])
+    .pipe(replace('module.exports', 'globalCtx.fluent'))
+    .pipe(gulp.dest('dist'))
+    .pipe(uglify())
+    .pipe(rename({extname: ".min.js"}))
+    .pipe(gulp.dest('dist'));
+});
+
 gulp.task('build', function (done) {
   runSequence(
     'lint',
     'test',
+    'browser',
     done
   );
 });

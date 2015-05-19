@@ -1,0 +1,25 @@
+{
+  "name": "fluent.js",
+  "version": "0.1.0",
+  "homepage": "https://github.com/nikaspran/fluent.js",
+  "authors": [
+    "Nikas Praninskas <nikaspran@gmail.com>"
+  ],
+  "description": "A tiny library for building fluent interfaces in JavaScript",
+  "main": "dist/fluent.js",
+  "moduleType": [
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "fluent"
+  ],
+  "ignore": [
+    "test-browser.html",
+    ".travis.yml",
+    ".jshintrc",
+    ".gitignore",
+    "gulpfile.js"
+  ],
+  "license": "MIT"
+}

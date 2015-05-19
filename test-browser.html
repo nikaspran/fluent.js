@@ -1,0 +1,18 @@
+<html>
+<head></head>
+<body>
+<script src="dist/fluent.js"></script>
+<script>
+  fluent({
+    with: '*',
+    after: '*'
+  }, function handler(value, otherValue) {
+    var copy = this.slice(0);
+    copy.splice(copy.indexOf(otherValue) + 1, 0, value);
+    return copy;
+  }, Array.prototype);
+
+  document.body.innerHTML = ['this', 'awesome'].with('is').after('this').join(' '); //['this', 'is', 'awesome']
+</script>
+</body>
+</html>

@@ -67,5 +67,5 @@
     return functionBuilder;
   }
 
-  module.exports = fluent;
+  globalCtx.fluent = fluent;
 }(this));
